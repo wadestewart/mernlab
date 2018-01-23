@@ -35,10 +35,11 @@ class TopicsContainer extends Component {
       if (event.dblclick) this.prev()
     }
 
+    // Kevon helped me get the get request to render
     componentDidMount() {
         axios
           .get('https://wadebankingqa.herokuapp.com/topics')
-          .then(response => this.setState({ topics: response.data.title }))
+          .then(response => this.setState({ topics: response.data }))
           window.addEventListener('click', this.handleClick)
           window.addEventListener('dblclick', this.handleDoubleClick)
     }
@@ -48,15 +49,18 @@ class TopicsContainer extends Component {
       window.removeEventListener('dblclick', this.handleDoubleClick)
     }
 
+    // Kevon helped with .map to get my object to render
     render () {
-      let topic = this.state.topics[this.state.currentIndex]
+      let topics = this.state.topics
         return (
             <div>
-              <main>
-                <div>
-                  {topic}
-                </div>
-              </main>
+              {this.state.topics.map((topic, index) => {
+                return <li key={index}>
+                  <a href={'/topic/' + topic.title}>
+                    {topic.title}
+                  </a>
+                </li>
+              })}
             </div>
         )
     }
