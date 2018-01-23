@@ -3,13 +3,10 @@ import axios from 'axios'
 import './TopicsContainer.css'
 
 class TopicsContainer extends Component {
-    constructor (props) {
-        super (props)
-        this.state = {
+        state = {
           topics        : [],
           currentIndex  : 0
         }
-    }
 
     // Kevon helped me get the get request to render
     componentDidMount() {
@@ -20,16 +17,16 @@ class TopicsContainer extends Component {
 
     // Kevon helped with .map to get my object to render
     render () {
-      let topics = this.state.topics
+      let topics = this.state.topics.map((topic, index) => {
+                    return <li key={index} className='list'>
+                            <a href={'/topic/' + topic.title}>
+                                {topic.title}
+                            </a>
+                        </li>
+                    })
         return (
             <div className='container'>
-              {this.state.topics.map((topic, index) => {
-                return <li key={index} className='list'>
-                  <a href={'/topic/' + topic.title}>
-                    {topic.title}
-                  </a>
-                </li>
-              })}
+                {topics}
             </div>
         )
     }

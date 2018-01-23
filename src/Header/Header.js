@@ -7,7 +7,7 @@ const navStyle = {
 
 const aStyle = {
     fontSize: '3em',
-    textAlign: 'left'
+    textAlign: 'right'
 }
 
 // This code is from the flashcard app that Ali built for the life-cycle methods lesson
