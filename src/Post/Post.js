@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class Post extends Component {
         state = {
@@ -9,18 +10,24 @@ class Post extends Component {
         this.setState({ value: event.target.value })
     }
 
-    handleSubmit = (event0 => {
-        console.log('A name was submitted: ' + this.state.value)
+    handleSubmit = (event) => {
+        console.log('A topic was submitted: ' + this.state.value)
         event.preventDefault()
-    })
+        axios
+            .post('https://wadebankingqa.herokuapp.com/topics', {topic: { title: this.state.value }})
+            .then(response => {
+                console.log(response)
+                this.setState({ value: this.state.value })})
+    }
 
     render() {
         return (
             <div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <label>
-                        Post a Question
-                            <input type='text' value={this.state.value} onchange={this.handleChange} />
+                        Post a Topic
+                        <input type='text' value={this.state.value} onChange={this.handleChange} />
+                        <button type='submit'>Submit</button>
                     </label>
                 </form>
             </div>

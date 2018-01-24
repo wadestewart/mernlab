@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Header from './Header/Header.js'
 import TopicsContainer from './Topics/TopicsContainer'
+import Post from './Post/Post'
 import './App.css'
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
       <div>
         <Header/>
         <TopicsContainer/>
+        <Post />
       </div>
     )
   }
