@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import './Post.css'
 
 class Post extends Component {
         state = {
@@ -24,7 +25,7 @@ class Post extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label>
+                    <label className='post'>
                         Post a Topic
                         <input type='text' value={this.state.value} onChange={this.handleChange} />
                         <button type='submit'>Submit</button>

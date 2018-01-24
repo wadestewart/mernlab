@@ -12,8 +12,9 @@ class TopicsContainer extends Component {
     componentDidMount() {
         axios
           .get('https://wadebankingqa.herokuapp.com/topics')
-          .then(response => this.setState({ topics: response.data }))
-          console.log(this.state.topics)
+          .then(response => {
+            console.log(this.state.topics)
+            this.setState({ topics: response.data })})
     }
 
     // Kevon helped with .map to get my object to render
